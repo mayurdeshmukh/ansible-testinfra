@@ -1,0 +1,8 @@
+Blog used -
+https://opensource.com/article/19/5/using-testinfra-ansible-verify-server-state
+
+on local system
+pytest test_simple.py
+
+command to check infra using Ansible
+py.test --hosts=kube --ansible-inventory=/home/cloud_user/inventory --connection=ansible test.py  -v

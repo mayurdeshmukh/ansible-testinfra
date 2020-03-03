@@ -1,0 +1,32 @@
+import testinfra
+
+def test_os_release(host):
+    assert host.file("/etc/redhat-release").contains("Red Hat")
+
+
+def test_docker_running_and_enabled(host):
+    docker = host.service("docker")
+    assert docker.is_running
+    assert docker.is_enabled
+
+def test_docker_running_and_enabled(host):
+    docker = host.service("docker")
+    assert docker.is_running
+    assert docker.is_enabled
+
+
+def check_ansible_play(host):
+    """
+    Verify that a package is installed using Ansible
+    package module
+    """
+    assert not host.ansible("package", "name=docker state=present")["changed"]
+
+def test_passwd_file(host):
+    passwd = host.file("/etc/passwd")
+    assert passwd.contains("root")
+    assert passwd.user == "root"
+    assert passwd.group == "root"
+    assert passwd.mode == 0o644
+~                                                                                                                                              
+~                                    
